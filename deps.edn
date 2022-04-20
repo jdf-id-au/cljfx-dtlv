@@ -1,0 +1,5 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        cljfx/cljfx {:mvn/version "1.7.19"}
+        datalevin/datalevin {:mvn/version "0.6.6"}
+        com.cognitect/transit-clj {:mvn/version "1.0.329"}}} ; requested by datalevin
