@@ -28,6 +28,7 @@
                     :children
                     (into [{:fx/type :button :text "datalevin" :on-action {:type :dl-event}}]
                       (for [v (fx/sub-ctx context dlq-sub
+                                ;; just proof of concept, should really specialise subs more!
                                 '[:find [(pull ?e [*]) ...] :where [?e _ _]])]
                         {:fx/type :label :text (str v)}))}
                    {:fx/type :v-box
@@ -58,7 +59,7 @@
   []
   (fx/create-app ctx
     :event-handler handler
-    :desc-fn #(assoc % :fx/type root :dtlv dlc)
+    :desc-fn #(assoc % :fx/type root)
     :effects {:dl (dl-effect dlc)
               :ctx (ctx-effect ctx)}))
 
@@ -71,3 +72,6 @@
   (def app (create-app)))
 
 #_(rebind-app!)
+
+;; Run from repl and enjoy
+#_(dtlv/transact! dlc [{:hello "there"}])
